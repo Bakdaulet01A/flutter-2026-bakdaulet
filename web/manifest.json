@@ -1,6 +1,6 @@
 {
-    "name": "hello",
-    "short_name": "hello",
+    "name": "profile_screen",
+    "short_name": "profile_screen",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
