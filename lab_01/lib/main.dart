@@ -34,11 +34,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'Campus Events',
       themeMode: _themeMode,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: seedColor,
-        ),
-      ),
+      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: seedColor)),
       darkTheme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
           seedColor: seedColor,
@@ -70,9 +66,7 @@ class _MyAppState extends State<MyApp> {
 
           return MaterialPageRoute<Event?>(
             builder: (context) {
-              return EventFormScreen(
-                event: event,
-              );
+              return EventFormScreen(event: event);
             },
           );
         }
@@ -82,11 +76,7 @@ class _MyAppState extends State<MyApp> {
       onUnknownRoute: (settings) {
         return MaterialPageRoute(
           builder: (context) {
-            return const Scaffold(
-              body: Center(
-                child: Text('Not found'),
-              ),
-            );
+            return const Scaffold(body: Center(child: Text('Not found')));
           },
         );
       },
