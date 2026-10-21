@@ -18,8 +18,7 @@ class FavouritesTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final favourites =
-    events.where((event) => event.favourite).toList();
+    final favourites = events.where((event) => event.favourite).toList();
 
     if (favourites.isEmpty) {
       return const EmptyState(

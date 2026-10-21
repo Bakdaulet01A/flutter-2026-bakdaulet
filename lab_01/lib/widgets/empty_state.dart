@@ -25,10 +25,7 @@ class EmptyState extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
-              icon,
-              color: colorScheme.primary,
-            ),
+            Icon(icon, color: colorScheme.primary),
             const SizedBox(height: 12),
             Text(
               message,
@@ -37,10 +34,7 @@ class EmptyState extends StatelessWidget {
             ),
             if (buttonText != null && onPressed != null) ...[
               const SizedBox(height: 16),
-              FilledButton(
-                onPressed: onPressed,
-                child: Text(buttonText!),
-              ),
+              FilledButton(onPressed: onPressed, child: Text(buttonText!)),
             ],
           ],
         ),

@@ -24,7 +24,7 @@ class ShellScreen extends StatefulWidget {
 class _ShellScreenState extends State<ShellScreen> {
   int _selectedIndex = 0;
 
-  List<Event> _events = [...seedEvents];
+  final List<Event> _events = [...seedEvents];
   Profile _profile = const Profile.empty();
 
   void _toggleFavourite(Event event) {
@@ -35,9 +35,7 @@ class _ShellScreenState extends State<ShellScreen> {
     }
 
     setState(() {
-      _events[index] = event.copyWith(
-        favourite: !event.favourite,
-      );
+      _events[index] = event.copyWith(favourite: !event.favourite);
     });
   }
 
@@ -48,18 +46,13 @@ class _ShellScreenState extends State<ShellScreen> {
   }
 
   void _openEvent(Event event) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Open: ${event.title}'),
-      ),
-    );
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text('Open: ${event.title}')));
   }
 
   void _addEvent() {
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Event form will be added next'),
-      ),
+      const SnackBar(content: Text('Event form will be added next')),
     );
   }
 
@@ -86,20 +79,11 @@ class _ShellScreenState extends State<ShellScreen> {
       ),
     ];
 
-    final titles = [
-      'Campus Events',
-      'Favourites',
-      'Profile',
-    ];
+    final titles = ['Campus Events', 'Favourites', 'Profile'];
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(titles[_selectedIndex]),
-      ),
-      body: IndexedStack(
-        index: _selectedIndex,
-        children: pages,
-      ),
+      appBar: AppBar(title: Text(titles[_selectedIndex])),
+      body: IndexedStack(index: _selectedIndex, children: pages),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _selectedIndex,
         onDestinationSelected: (index) {

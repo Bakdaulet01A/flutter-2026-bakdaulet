@@ -34,8 +34,7 @@ class _EventsTabState extends State<EventsTab> {
     return widget.events.where((event) {
       final matchesSearch = event.title.toLowerCase().contains(query);
 
-      final matchesCategory =
-          _category == null || event.category == _category;
+      final matchesCategory = _category == null || event.category == _category;
 
       final matchesPast = !_pastOnly || event.isPast;
 
@@ -69,12 +68,12 @@ class _EventsTabState extends State<EventsTab> {
                 suffixIcon: _search.text.isEmpty
                     ? null
                     : IconButton(
-                  onPressed: () {
-                    _search.clear();
-                    setState(() {});
-                  },
-                  icon: const Icon(Icons.clear),
-                ),
+                        onPressed: () {
+                          _search.clear();
+                          setState(() {});
+                        },
+                        icon: const Icon(Icons.clear),
+                      ),
               ),
             ),
           ),
@@ -121,62 +120,60 @@ class _EventsTabState extends State<EventsTab> {
           Expanded(
             child: visible.isEmpty
                 ? const EmptyState(
-              icon: Icons.search_off,
-              message: 'No matching events',
-            )
+                    icon: Icons.search_off,
+                    message: 'No matching events',
+                  )
                 : LayoutBuilder(
-              builder: (context, constraints) {
-                if (constraints.maxWidth >= 600) {
-                  final columns =
-                  (constraints.maxWidth / 360).ceil();
+                    builder: (context, constraints) {
+                      if (constraints.maxWidth >= 600) {
+                        final columns = (constraints.maxWidth / 360).ceil();
 
-                  return GridView.builder(
-                    padding: const EdgeInsets.all(12),
-                    itemCount: visible.length,
-                    gridDelegate:
-                    SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: columns,
-                      childAspectRatio: 2.5,
-                      crossAxisSpacing: 12,
-                      mainAxisSpacing: 12,
-                    ),
-                    itemBuilder: (context, index) {
-                      final event = visible[index];
+                        return GridView.builder(
+                          padding: const EdgeInsets.all(12),
+                          itemCount: visible.length,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: columns,
+                                childAspectRatio: 2.5,
+                                crossAxisSpacing: 12,
+                                mainAxisSpacing: 12,
+                              ),
+                          itemBuilder: (context, index) {
+                            final event = visible[index];
 
-                      return EventCard(
-                        event: event,
-                        onTap: () {
-                          widget.onOpen(event);
-                        },
-                        onFavourite: () {
-                          widget.onFavourite(event);
+                            return EventCard(
+                              event: event,
+                              onTap: () {
+                                widget.onOpen(event);
+                              },
+                              onFavourite: () {
+                                widget.onFavourite(event);
+                              },
+                            );
+                          },
+                        );
+                      }
+
+                      return ListView.separated(
+                        padding: const EdgeInsets.all(12),
+                        itemCount: visible.length,
+                        separatorBuilder: (_, _) => const SizedBox(height: 8),
+                        itemBuilder: (context, index) {
+                          final event = visible[index];
+
+                          return EventCard(
+                            event: event,
+                            onTap: () {
+                              widget.onOpen(event);
+                            },
+                            onFavourite: () {
+                              widget.onFavourite(event);
+                            },
+                          );
                         },
                       );
                     },
-                  );
-                }
-
-                return ListView.separated(
-                  padding: const EdgeInsets.all(12),
-                  itemCount: visible.length,
-                  separatorBuilder: (_, _) =>
-                  const SizedBox(height: 8),
-                  itemBuilder: (context, index) {
-                    final event = visible[index];
-
-                    return EventCard(
-                      event: event,
-                      onTap: () {
-                        widget.onOpen(event);
-                      },
-                      onFavourite: () {
-                        widget.onFavourite(event);
-                      },
-                    );
-                  },
-                );
-              },
-            ),
+                  ),
           ),
         ],
       ),

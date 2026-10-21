@@ -1,3 +1,4 @@
+// ignore_for_file: prefer_initializing_formals
 import 'package:flutter/material.dart';
 
 enum EventCategory {
@@ -57,15 +58,15 @@ class Event {
   }) : _attendees = attendees;
 
   Event.empty()
-      : title = '',
-        category = EventCategory.tech,
-        when = DateTime.now().add(const Duration(days: 1)),
-        place = '',
-        limit = 1,
-        _attendees = const [],
-        online = false,
-        description = null,
-        favourite = false;
+    : title = '',
+      category = EventCategory.tech,
+      when = DateTime.now().add(const Duration(days: 1)),
+      place = '',
+      limit = 1,
+      _attendees = const [],
+      online = false,
+      description = null,
+      favourite = false;
 
   final String title;
   final EventCategory category;
@@ -89,10 +90,7 @@ class Event {
 
   bool contains(String name) => _attendees.contains(name);
 
-  ({int taken, int free}) get places => (
-  taken: count,
-  free: freePlaces,
-  );
+  ({int taken, int free}) get places => (taken: count, free: freePlaces);
 
   Countdown get countdown {
     final now = DateTime.now();

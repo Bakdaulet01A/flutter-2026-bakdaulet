@@ -7,12 +7,7 @@ final seedEvents = <Event>[
     when: DateTime.now().add(const Duration(days: 3, hours: 2)),
     place: 'KBTU Hall A',
     limit: 40,
-    attendees: const [
-      'Aida',
-      'Dias',
-      'Madina',
-      'Alikhan',
-    ],
+    attendees: const ['Aida', 'Dias', 'Madina', 'Alikhan'],
     description: 'A campus hackathon for students interested in technology.',
     favourite: true,
   ),
@@ -22,13 +17,7 @@ final seedEvents = <Event>[
     when: DateTime.now().add(const Duration(days: 5)),
     place: 'Main Hall',
     limit: 5,
-    attendees: const [
-      'Aida',
-      'Dias',
-      'Madina',
-      'Alikhan',
-      'Zhanel',
-    ],
+    attendees: const ['Aida', 'Dias', 'Madina', 'Alikhan', 'Zhanel'],
     description: 'Meet companies and learn about internship opportunities.',
   ),
   Event(
@@ -37,11 +26,7 @@ final seedEvents = <Event>[
     when: DateTime.now().subtract(const Duration(days: 2)),
     place: 'Sports Center',
     limit: 20,
-    attendees: const [
-      'Arman',
-      'Kamila',
-      'Yerlan',
-    ],
+    attendees: const ['Arman', 'Kamila', 'Yerlan'],
     description: 'Open basketball training for students.',
   ),
   Event(
@@ -50,10 +35,7 @@ final seedEvents = <Event>[
     when: DateTime.now().add(const Duration(days: 1, hours: 3)),
     place: 'https://meet.example.com/flutter',
     limit: 50,
-    attendees: const [
-      'Aida',
-      'Timur',
-    ],
+    attendees: const ['Aida', 'Timur'],
     online: true,
     description: 'Learn Flutter basics in an online workshop.',
   ),
@@ -63,10 +45,7 @@ final seedEvents = <Event>[
     when: DateTime.now().add(const Duration(days: 7)),
     place: 'Room 301',
     limit: 25,
-    attendees: const [
-      'Dana',
-      'Aruzhan',
-    ],
+    attendees: const ['Dana', 'Aruzhan'],
   ),
   Event(
     title: 'Student Movie Night',
@@ -74,11 +53,7 @@ final seedEvents = <Event>[
     when: DateTime.now().add(const Duration(days: 4)),
     place: 'Student Lounge',
     limit: 30,
-    attendees: const [
-      'Sanzhar',
-      'Bekzat',
-      'Amina',
-    ],
+    attendees: const ['Sanzhar', 'Bekzat', 'Amina'],
     description: 'Watch a movie together and meet other students.',
   ),
   Event(
@@ -87,11 +62,7 @@ final seedEvents = <Event>[
     when: DateTime.now().add(const Duration(days: 8, hours: 1)),
     place: 'Assembly Hall',
     limit: 60,
-    attendees: const [
-      'Tomiris',
-      'Inkar',
-      'Daniyar',
-    ],
+    attendees: const ['Tomiris', 'Inkar', 'Daniyar'],
     description: 'An evening of music, traditions and student performances.',
     favourite: true,
   ),
@@ -101,10 +72,7 @@ final seedEvents = <Event>[
     when: DateTime.now().add(const Duration(days: 10)),
     place: 'Room 405',
     limit: 18,
-    attendees: const [
-      'Ali',
-      'Ayan',
-    ],
+    attendees: const ['Ali', 'Ayan'],
     description: 'Introduction to research methods for university projects.',
   ),
   Event(
@@ -113,11 +81,7 @@ final seedEvents = <Event>[
     when: DateTime.now().add(const Duration(days: 12)),
     place: 'Innovation Hub',
     limit: 35,
-    attendees: const [
-      'Dias',
-      'Arman',
-      'Dana',
-    ],
+    attendees: const ['Dias', 'Arman', 'Dana'],
     description: 'Meet students interested in startups and entrepreneurship.',
   ),
   Event(
@@ -126,9 +90,7 @@ final seedEvents = <Event>[
     when: DateTime.now().add(const Duration(hours: 18)),
     place: 'Gym Studio',
     limit: 15,
-    attendees: const [
-      'Kamila',
-    ],
+    attendees: const ['Kamila'],
     description: 'A beginner-friendly yoga session.',
   ),
   Event(
@@ -137,11 +99,7 @@ final seedEvents = <Event>[
     when: DateTime.now().add(const Duration(days: 6)),
     place: 'Room 210',
     limit: 12,
-    attendees: const [
-      'Yerlan',
-      'Zhanel',
-      'Bekzat',
-    ],
+    attendees: const ['Yerlan', 'Zhanel', 'Bekzat'],
     description: 'Play board games and relax after classes.',
   ),
   Event(
@@ -150,10 +108,7 @@ final seedEvents = <Event>[
     when: DateTime.now().add(const Duration(days: 14)),
     place: 'KBTU Gallery',
     limit: 45,
-    attendees: const [
-      'Madina',
-      'Tomiris',
-    ],
+    attendees: const ['Madina', 'Tomiris'],
     description: 'Student digital artworks and creative projects.',
   ),
 ];

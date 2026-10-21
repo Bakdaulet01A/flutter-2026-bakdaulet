@@ -35,13 +35,9 @@ class _ProfileTabState extends State<ProfileTab> {
   void initState() {
     super.initState();
 
-    _nameController = TextEditingController(
-      text: widget.profile.name,
-    );
+    _nameController = TextEditingController(text: widget.profile.name);
 
-    _groupController = TextEditingController(
-      text: widget.profile.group,
-    );
+    _groupController = TextEditingController(text: widget.profile.group);
   }
 
   @override
@@ -65,11 +61,7 @@ class _ProfileTabState extends State<ProfileTab> {
   }
 
   void _saveName(String value) {
-    widget.onProfileChanged(
-      widget.profile.copyWith(
-        name: value.trim(),
-      ),
-    );
+    widget.onProfileChanged(widget.profile.copyWith(name: value.trim()));
   }
 
   void _saveGroup(String value) {
@@ -86,11 +78,7 @@ class _ProfileTabState extends State<ProfileTab> {
       _groupError = null;
     });
 
-    widget.onProfileChanged(
-      widget.profile.copyWith(
-        group: group,
-      ),
-    );
+    widget.onProfileChanged(widget.profile.copyWith(group: group));
   }
 
   String _themeLabel(ThemeMode mode) {
@@ -108,16 +96,13 @@ class _ProfileTabState extends State<ProfileTab> {
     final joinedCount = name.isEmpty
         ? 0
         : widget.events.where((event) {
-      return event.contains(name);
-    }).length;
+            return event.contains(name);
+          }).length;
 
     return ListView(
       padding: const EdgeInsets.all(16),
       children: [
-        Text(
-          'Profile',
-          style: Theme.of(context).textTheme.headlineSmall,
-        ),
+        Text('Profile', style: Theme.of(context).textTheme.headlineSmall),
         const SizedBox(height: 16),
         TextField(
           controller: _nameController,
@@ -145,10 +130,7 @@ class _ProfileTabState extends State<ProfileTab> {
           style: Theme.of(context).textTheme.titleMedium,
         ),
         const SizedBox(height: 24),
-        Text(
-          'Theme',
-          style: Theme.of(context).textTheme.titleMedium,
-        ),
+        Text('Theme', style: Theme.of(context).textTheme.titleMedium),
         const SizedBox(height: 8),
         Wrap(
           spacing: 8,

@@ -92,9 +92,7 @@ class EventCard extends StatelessWidget {
               IconButton(
                 onPressed: onFavourite,
                 icon: Icon(
-                  event.favourite
-                      ? Icons.favorite
-                      : Icons.favorite_border,
+                  event.favourite ? Icons.favorite : Icons.favorite_border,
                   color: colorScheme.primary,
                 ),
               ),

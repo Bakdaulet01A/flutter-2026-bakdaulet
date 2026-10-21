@@ -13,7 +13,7 @@ String formatDateTime(DateTime date) {
     'Nov',
     'Dec',
   ];
-  git add lib/utils/format.dart
+
   final day = date.day;
   final month = months[date.month - 1];
   final hour = date.hour.toString().padLeft(2, '0');
