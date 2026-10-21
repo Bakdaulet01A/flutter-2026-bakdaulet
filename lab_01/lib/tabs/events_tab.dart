@@ -31,7 +31,7 @@ class _EventsTabState extends State<EventsTab> {
   List<Event> get _visible {
     final query = _search.text.trim().toLowerCase();
 
-    return widget.events.where((event) {
+    final filtered = widget.events.where((event) {
       final matchesSearch = event.title.toLowerCase().contains(query);
 
       final matchesCategory = _category == null || event.category == _category;
@@ -40,6 +40,10 @@ class _EventsTabState extends State<EventsTab> {
 
       return matchesSearch && matchesCategory && matchesPast;
     }).toList();
+
+    final sorted = [...filtered]..sort((a, b) => a.when.compareTo(b.when));
+
+    return sorted;
   }
 
   @override
@@ -70,6 +74,7 @@ class _EventsTabState extends State<EventsTab> {
                     : IconButton(
                         onPressed: () {
                           _search.clear();
+
                           setState(() {});
                         },
                         icon: const Icon(Icons.clear),
