@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import '../data/seed.dart';
 import '../models/event.dart';
 import '../models/profile.dart';
+import '../routes.dart';
 import '../tabs/events_tab.dart';
 import '../tabs/favourites_tab.dart';
 import '../tabs/profile_tab.dart';
+import 'detail_screen.dart';
 
 class ShellScreen extends StatefulWidget {
   const ShellScreen({
@@ -39,15 +41,50 @@ class _ShellScreenState extends State<ShellScreen> {
     });
   }
 
+  void _replaceEvent(Event oldEvent, Event newEvent) {
+    final index = _events.indexOf(oldEvent);
+
+    if (index == -1) {
+      return;
+    }
+
+    setState(() {
+      _events[index] = newEvent;
+    });
+  }
+
+  void _deleteEvent(Event event) {
+    setState(() {
+      _events.remove(event);
+    });
+  }
+
   void _changeProfile(Profile profile) {
     setState(() {
       _profile = profile;
     });
   }
 
-  void _openEvent(Event event) {
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text('Open: ${event.title}')));
+  Future<void> _openEvent(Event event) async {
+    await Navigator.of(context).pushNamed(
+      Routes.detail,
+      arguments: DetailArgs(
+        event: event,
+        profile: _profile,
+        onChanged: (changed) {
+          _replaceEvent(event, changed);
+          event = changed;
+        },
+        onDelete: () {
+          _deleteEvent(event);
+        },
+        onOpenProfile: () {
+          setState(() {
+            _selectedIndex = 2;
+          });
+        },
+      ),
+    );
   }
 
   void _addEvent() {

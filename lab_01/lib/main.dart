@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'routes.dart';
+import 'screens/detail_screen.dart';
 import 'screens/shell_screen.dart';
 
 void main() {
@@ -46,6 +47,26 @@ class _MyAppState extends State<MyApp> {
             onThemeModeChanged: _changeThemeMode,
           );
         },
+      },
+      onGenerateRoute: (settings) {
+        if (settings.name == Routes.detail) {
+          final args = settings.arguments as DetailArgs;
+
+          return MaterialPageRoute(
+            builder: (context) {
+              return DetailScreen(args: args);
+            },
+          );
+        }
+
+        return null;
+      },
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(
+          builder: (context) {
+            return const Scaffold(body: Center(child: Text('Not found')));
+          },
+        );
       },
     );
   }
