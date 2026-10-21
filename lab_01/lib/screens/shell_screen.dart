@@ -87,10 +87,16 @@ class _ShellScreenState extends State<ShellScreen> {
     );
   }
 
-  void _addEvent() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Event form will be added next')),
-    );
+  Future<void> _addEvent() async {
+    final result = await Navigator.of(context).pushNamed<Event>(Routes.form);
+
+    if (!mounted || result == null) {
+      return;
+    }
+
+    setState(() {
+      _events.add(result);
+    });
   }
 
   @override

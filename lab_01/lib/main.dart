@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'models/event.dart';
 import 'routes.dart';
 import 'screens/detail_screen.dart';
+import 'screens/event_form_screen.dart';
 import 'screens/shell_screen.dart';
 
 void main() {
@@ -55,6 +57,16 @@ class _MyAppState extends State<MyApp> {
           return MaterialPageRoute(
             builder: (context) {
               return DetailScreen(args: args);
+            },
+          );
+        }
+
+        if (settings.name == Routes.form) {
+          final event = settings.arguments as Event?;
+
+          return MaterialPageRoute(
+            builder: (context) {
+              return EventFormScreen(event: event);
             },
           );
         }
