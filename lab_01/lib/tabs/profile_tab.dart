@@ -71,6 +71,7 @@ class _ProfileTabState extends State<ProfileTab> {
       setState(() {
         _groupError = 'Use letters, numbers and -';
       });
+
       return;
     }
 
@@ -95,9 +96,13 @@ class _ProfileTabState extends State<ProfileTab> {
 
     final joinedCount = name.isEmpty
         ? 0
-        : widget.events.where((event) {
-            return event.contains(name);
-          }).length;
+        : widget.events
+              .map((event) {
+                final joined = event.attendees.any((person) => person == name);
+
+                return joined ? 1 : 0;
+              })
+              .fold<int>(0, (count, value) => count + value);
 
     return ListView(
       padding: const EdgeInsets.all(16),
