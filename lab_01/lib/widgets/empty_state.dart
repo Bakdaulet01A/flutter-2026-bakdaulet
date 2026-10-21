@@ -34,7 +34,7 @@ class EmptyState extends StatelessWidget {
             ),
             if (buttonText != null && onPressed != null) ...[
               const SizedBox(height: 16),
-              FilledButton(onPressed: onPressed, child: Text(buttonText!)),
+              FilledButton(onPressed: onPressed, child: Text(buttonText ?? '')),
             ],
           ],
         ),
