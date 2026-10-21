@@ -99,6 +99,62 @@ class _ShellScreenState extends State<ShellScreen> {
     });
   }
 
+  void _showAbout() {
+    Navigator.of(context).pop();
+
+    showAboutDialog(
+      context: context,
+      applicationName: 'Campus Events',
+      applicationVersion: '1.0',
+      children: const [
+        Text('A Flutter app for browsing and joining campus events.'),
+      ],
+    );
+  }
+
+  Future<void> _resetData() async {
+    Navigator.of(context).pop();
+
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Reset data?'),
+          content: const Text(
+            'Events and profile data will return to the initial state.',
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              },
+              child: const Text('Cancel'),
+            ),
+            FilledButton(
+              onPressed: () {
+                Navigator.of(context).pop(true);
+              },
+              child: const Text('Reset'),
+            ),
+          ],
+        );
+      },
+    );
+
+    if (!mounted || confirmed != true) {
+      return;
+    }
+
+    setState(() {
+      _events
+        ..clear()
+        ..addAll(seedEvents);
+
+      _profile = const Profile.empty();
+      _selectedIndex = 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final pages = [
@@ -126,6 +182,30 @@ class _ShellScreenState extends State<ShellScreen> {
 
     return Scaffold(
       appBar: AppBar(title: Text(titles[_selectedIndex])),
+      drawer: Drawer(
+        child: SafeArea(
+          child: ListView(
+            children: [
+              const ListTile(
+                leading: Icon(Icons.event),
+                title: Text('Campus Events'),
+                subtitle: Text('Flutter Lab 01'),
+              ),
+              const Divider(),
+              ListTile(
+                leading: const Icon(Icons.info_outline),
+                title: const Text('About'),
+                onTap: _showAbout,
+              ),
+              ListTile(
+                leading: const Icon(Icons.restart_alt),
+                title: const Text('Reset data'),
+                onTap: _resetData,
+              ),
+            ],
+          ),
+        ),
+      ),
       body: IndexedStack(index: _selectedIndex, children: pages),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _selectedIndex,
